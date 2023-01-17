@@ -1,5 +1,5 @@
 {
-  "name": "server",
+  "name": "tasklist-server",
   "version": "1.0.0",
   "description": "tasklist server",
   "main": "index.js",
