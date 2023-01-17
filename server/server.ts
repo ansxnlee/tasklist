@@ -7,7 +7,7 @@ import { PostgreSqlDriver } from '@mikro-orm/postgresql';
 import mikroConfig from './mikro-orm.config';
 
 import { TaskEntity } from './entities/TaskEntity';
-import { TaskController } from './controllers/TaskController';
+import { TaskRouter } from './routes/TaskRouter';
 
 // dependency injection to reuse the same mikroORM request instance
 export const DI = {} as {
@@ -32,7 +32,8 @@ export const main = (async () => {
   app.use((_req, _res, next) => {
     RequestContext.create(DI.orm.em, next);
   });
-  app.use('/task', TaskController);
+
+  app.use('/task', TaskRouter);
   app.use((_req, res) => res.status(404).json({ message: 'Route not found'}));
 
   DI.server = app.listen(PORT, () => {

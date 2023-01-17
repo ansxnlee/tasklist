@@ -1,21 +1,18 @@
 import { Request, Response } from 'express';
-import Router from 'express-promise-router';
 import { FilterQuery, QueryOrder } from '@mikro-orm/core';
 
 import { DI } from '../server';
 import { TaskEntity } from '../entities/TaskEntity';
 
-const router = Router();
-
-router.get('/', async (_req: Request, res: Response) => {
+export const getTasks = async (_req: Request, res: Response) => {
   const tasks = await DI.taskRepository.findAll({
     orderBy: {title: QueryOrder.DESC },
     limit: 20,
   });
   return res.json(tasks);
-});
+}
 
-router.get('/:id', async (req: Request, res: Response) => {
+export const getTask = async (req: Request, res: Response) => {
   try {
     const task = await DI.taskRepository.findOne(req.params.id as FilterQuery<TaskEntity>, {});
     if(!task) {
@@ -25,9 +22,9 @@ router.get('/:id', async (req: Request, res: Response) => {
   } catch (e: any) {
     return res.status(400).json({ message: e.message });
   }
-});
+}
 
-router.post('/', async (req: Request, res:Response) => {
+export const createTask = async (req: Request, res:Response) => {
   if(!req.body.title || !req.body.text) {
     return res.status(400).json({ message: 'Missing essential paramters' });
   }
@@ -38,9 +35,9 @@ router.post('/', async (req: Request, res:Response) => {
   } catch(e: any) {
     return res.status(400).json({ message: e.message });
   }
-});
+}
 
-router.put('/:id', async (req: Request, res:Response) => {
+export const updateTask = async (req: Request, res:Response) => {
   try {
     const task = await DI.taskRepository.findOne(req.params.id as FilterQuery<TaskEntity>, {});
     if(!task) {
@@ -51,6 +48,4 @@ router.put('/:id', async (req: Request, res:Response) => {
   } catch(e: any) {
     return res.status(400).json({ message: e.message});
   }
-});
-
-export const TaskController = router;
+}
