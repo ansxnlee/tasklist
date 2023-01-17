@@ -1,0 +1,27 @@
+Curl GET request example
+---
+$ curl -X GET "http://localhost:4000"
+
+
+
+Curl GET request w/ params
+---
+$ curl -X GET "http://localhost:4000/1"
+
+
+
+Curl PUT request
+---
+$ curl -X PUT "http://localhost:4000/1" -H 'Content-Type: application/json' -d '{"title": "alt title", "text": "alt text"}'
+
+
+
+Curl POST JSON example
+---
+$ curl -X POST "http://localhost:4000" -H 'Content-Type: application/json' -d '{"title": "sample title", "text": "sample text"}'
+
+
+
+Curl DELETE request
+---
+curl -X DELETE "http://localhost:4000/1"

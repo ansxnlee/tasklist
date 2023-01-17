@@ -33,7 +33,7 @@ export const main = (async () => {
     RequestContext.create(DI.orm.em, next);
   });
 
-  app.use('/task', TaskRouter);
+  app.use('/', TaskRouter);
   app.use((_req, res) => res.status(404).json({ message: 'Route not found'}));
 
   DI.server = app.listen(PORT, () => {

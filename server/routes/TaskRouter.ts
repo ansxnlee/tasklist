@@ -3,12 +3,14 @@ import {
   getTask,
   getTasks,
   createTask,
-  updateTask
+  updateTask,
+  deleteTask
 } from '../controllers/TaskController';
 
 export const TaskRouter = express.Router();
 
-TaskRouter.get('/', getTasks);
 TaskRouter.get('/:id', getTask);
-TaskRouter.post('/', createTask);
 TaskRouter.put('/:id', updateTask);
+TaskRouter.delete('/:id', deleteTask);
+TaskRouter.get('/', getTasks);
+TaskRouter.post('/', createTask);
