@@ -1,3 +1,4 @@
 export const COLORS = {
-  darkBackground: '#444444',
+  darkBackground: '#222222',
+  componentBackground: '#444444'
 }
