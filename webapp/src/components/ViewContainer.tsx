@@ -17,5 +17,5 @@ export const ViewContainer = styled.div<Props>`
   padding-right: ${(props) => (props.pr ? props.pr : null)};
   padding-bottom: ${(props) => (props.pb ? props.pb : null)};
   padding-left: ${(props) => (props.pl ? props.pl: null)};
-  background-color: ${COLORS.darkBackground};
+  background-color: ${COLORS.background};
 `;

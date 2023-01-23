@@ -36,9 +36,9 @@ const CardContainer = styled.div<CardContainerProps>`
 
 const CardTitle = styled.div`
   font-size: 1.5em;
-  color: white;
+  color: ${COLORS.text};
 `;
 
 const CardText = styled.span`
-  color: white;
+  color: ${COLORS.text};
 `

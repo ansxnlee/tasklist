@@ -1,4 +1,6 @@
 export const COLORS = {
-  darkBackground: '#222222',
-  componentBackground: '#444444'
+  background: 'white',
+  componentBackground: '#c4c4c4',
+  highlight: '#00AFFF',
+  text: '#222222'
 }
