@@ -8,7 +8,8 @@
     "watch": "tsc -w",
     "start": "tsc && node dist/index.js",
     "dev": "nodemon dist/index/js",
-    "initdb": "ts-node utils/initPostgres.ts"
+    "initdb": "ts-node utils/initPostgres.ts",
+    "popdb": "ts-node utils/populatePostgres.ts"
   },
   "keywords": [],
   "author": "Anson Lee",
