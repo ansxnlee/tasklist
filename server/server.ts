@@ -1,6 +1,7 @@
 import 'reflect-metadata';
 import http from "http";
 import express from 'express';
+import cors from 'cors';
 
 import { EntityManager, EntityRepository, MikroORM, RequestContext } from "@mikro-orm/core"
 import { PostgreSqlDriver } from '@mikro-orm/postgresql';
@@ -32,6 +33,12 @@ export const main = (async () => {
   app.use((_req, _res, next) => {
     RequestContext.create(DI.orm.em, next);
   });
+
+  const corsOptions = {
+    origin: "http://localhost:3000",
+    optionsSuccessStatus: 200
+  }
+  app.use(cors(corsOptions));
 
   app.use('/', TaskRouter);
   app.use((_req, res) => res.status(404).json({ message: 'Route not found'}));

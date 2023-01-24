@@ -32,6 +32,7 @@ const CardContainer = styled.div<CardContainerProps>`
   padding: 20px;
   margin: 20px;
   background-color: ${COLORS.componentBackground};
+  border-radius: 20px;
 `;
 
 const CardTitle = styled.div`
