@@ -4,27 +4,21 @@ import { Card } from '../components/Card';
 import { RouteButton } from '../components/RouteButton';
 import { Title } from '../components/Title';
 import { ViewContainer } from '../components/ViewContainer';
+import { getTask } from '../utils/axios';
 
 interface TaskProps {
   title: string;
   text: string;
+  id: string;
 }
 
 const Main = () => {
   const [tasks, setTasks] = useState<TaskProps[]>([]);
 
-  const fetchTasks = async () => {
-    try {
-      const res = await axios.get('http://localhost:4000/');
-      setTasks(res.data)
-    } catch (e) {
-      console.error(e);
-    }
-  };
-
   useEffect(() => {
     (async () => {
-      await fetchTasks();
+      const res = await getTask();
+      setTasks(res!.data);
     })();
   }, []);
 
@@ -33,7 +27,7 @@ const Main = () => {
       <Title text='Tasklist' />
       <RouteButton text='Create New Task' href='/newtask' />
       {tasks.map(task => (
-        <Card title={task.title} text={task.text} />
+          <Card key={task.id} title={task.title} text={task.text} taskid={task.id} />
       ))}
     </ViewContainer>
   );
