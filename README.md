@@ -6,4 +6,4 @@ simple web app for tracking tasks
 - express server
 - postgresql db
 
-goal of this project is to get practice with creating ci/cd pipelines
+practice with fullstack applications and creating ci/cd pipelines
