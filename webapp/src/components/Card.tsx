@@ -32,7 +32,7 @@ export const Card = ({ title, text, taskid }: CardProps) => {
 
   useEffect(() => {
     if(refresh) {
-      navigate(0);
+      navigate(0); // navigates to current page (mimics a page refresh)
     }
   }, [refresh])
 
@@ -95,8 +95,8 @@ const DeleteModal = styled.div`
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  width: 30%;
-  height: 30%;
+  width: 40%;
+  height: 40%;
   border-radius: 20px;
   background-color: ${COLORS.altBackground};
   backdrop-filter: blur(4px);
