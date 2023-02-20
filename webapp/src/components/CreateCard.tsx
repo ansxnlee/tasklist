@@ -1,11 +1,10 @@
 import styled from '@emotion/styled';
-import { css } from '@emotion/react';
 import { COLORS } from '../constants';
 import { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { Formik, Form, Field} from 'formik';
 import * as Yup from 'yup';
-import axios from 'axios';
+import { createTask } from '../utils/axios';
 
 interface TaskProps {
   title: string;
@@ -27,12 +26,9 @@ export const CreateCard = () => {
   const [refresh, setRefresh] = useState(false);
   const navigate = useNavigate();
 
-  const createTask = async (task: TaskProps) => {
+  const createNewTask = async (task: TaskProps) => {
     try {
-      const res = await axios.post('http://localhost:4000/', {
-        title: task.title,
-        text: task.text
-      });
+      createTask(task.title, task.text);
       setRefresh(true);
     } catch (e) {
       console.error(e);
@@ -43,7 +39,7 @@ export const CreateCard = () => {
     if(refresh) {
       navigate('/');
     }
-  }, [refresh])
+  }, [refresh, navigate])
   
   return (
     <FormContainer>
@@ -53,7 +49,7 @@ export const CreateCard = () => {
           text: '',
         }}
         validationSchema={FormSchema}
-        onSubmit={(task) => createTask(task)}
+        onSubmit={(task) => createNewTask(task)}
       >
         {({ errors, touched}) => (
           <Form>
