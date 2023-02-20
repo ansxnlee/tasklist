@@ -2,8 +2,18 @@
 
 simple web app for tracking tasks
 
-- react webapp
-- express server
-- postgresql db
+- react
+- emotion (css-in-js lib.)
+- expressJS
+- postgresql
+- mikroORM
 
-goal of this project is to get practice with creating ci/cd pipelines
+practice with fullstack applications and creating ci/cd pipelines
+
+---
+Some things that might be fun to try to implement:
+- caching queries in a redis data store
+- process manager daemon for the server
+- making the app conform to PCI standards
+- endpoint authentication
+- docker but prob not
