@@ -1,7 +1,7 @@
-import { CreateCard } from '../components/CreateCard';
-import { RouteButton } from '../components/RouteButton';
-import { Title } from '../components/Title';
 import { ViewContainer } from '../components/ViewContainer';
+import { Title } from '../components/Title';
+import { RouteButton } from '../components/RouteButton';
+import { CreateCard } from '../components/CreateCard';
 
 const Create = () => {
   return (

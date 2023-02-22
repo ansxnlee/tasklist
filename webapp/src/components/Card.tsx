@@ -1,6 +1,6 @@
+import { useState } from 'react';
 import styled from '@emotion/styled';
 import { COLORS } from '../constants';
-import { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { deleteTask } from '../utils/axios';
 
@@ -18,36 +18,30 @@ interface CardProps {
  * @returns JSX Element
  */
 export const Card = ({ title, text, taskid }: CardProps) => {
-  const [refresh, setRefresh] = useState(false);
+  const [readyDelete, setReadyDelete] = useState(false);
   const navigate = useNavigate();
-  // hacky way(?) of getting the button in it's respective list item
-  const deleteBtn = document.getElementById(taskid!);
 
   const confirmDelete = () => {
     deleteTask(taskid!);
-    //console.log('task has title ' + title +' and id ' + id);
-    deleteBtn!.style.display='none';
-    setRefresh(true);
+    setReadyDelete(false);
+    navigate(0);
   }
-
-  useEffect(() => {
-    if(refresh) {
-      navigate(0); // navigates to current page (mimics a page refresh)
-    }
-  }, [refresh])
 
   return (
     <CardContainer>
       <CardTitle>{title}</CardTitle>
       <CardText>{text}</CardText>
-      <DeleteTrigger onClick={() => {deleteBtn!.style.display='flex';}}>Delete Task</DeleteTrigger>
-      <DeleteModalContainer id={taskid!}>
-        <DeleteModal>
-          <DeleteText>Are you sure you want to delete task: {title}? (id={taskid})</DeleteText>
-          <DeleteCancel onClick={() => {deleteBtn!.style.display='none';}}>Cancel</DeleteCancel>
-          <DeleteConfirm onClick={() => confirmDelete()}>Confirm</DeleteConfirm>
-        </DeleteModal>
-      </DeleteModalContainer>
+      <DeleteTrigger onClick={() => {setReadyDelete(true)}}>Delete Task</DeleteTrigger>
+      {readyDelete ? 
+        <DeleteModalContainer id={taskid!}>
+          <DeleteModal>
+            <DeleteText>Are you sure you want to delete task: {title}? (id={taskid})</DeleteText>
+            <DeleteCancel onClick={() => {setReadyDelete(false)}}>Cancel</DeleteCancel>
+            <DeleteConfirm onClick={() => confirmDelete()}>Confirm</DeleteConfirm> 
+          </DeleteModal>
+        </DeleteModalContainer> :
+        <></>
+      }
     </CardContainer>
   );
 }
@@ -77,7 +71,7 @@ const DeleteTrigger = styled.button`
 `;
 
 const DeleteModalContainer = styled.div`
-  display: none;
+  display: flex;
   flex-direction: column;
   position: fixed;
   align-items: center;

@@ -1,8 +1,7 @@
 import styled from '@emotion/styled';
 import { COLORS } from '../constants';
-import { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { Formik, Form, Field} from 'formik';
+import { Formik, Form, Field } from 'formik';
 import * as Yup from 'yup';
 import { createTask } from '../utils/axios';
 
@@ -23,23 +22,16 @@ const FormSchema = Yup.object().shape({
 });
 
 export const CreateCard = () => {
-  const [refresh, setRefresh] = useState(false);
   const navigate = useNavigate();
 
   const createNewTask = async (task: TaskProps) => {
     try {
       createTask(task.title, task.text);
-      setRefresh(true);
+      navigate('/');
     } catch (e) {
       console.error(e);
     }
   }
-
-  useEffect(() => {
-    if(refresh) {
-      navigate('/');
-    }
-  }, [refresh, navigate])
   
   return (
     <FormContainer>
