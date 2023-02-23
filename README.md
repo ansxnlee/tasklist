@@ -8,7 +8,7 @@ simple web app for tracking tasks
 - postgresql
 - mikroORM
 
-practice with fullstack applications and creating ci/cd pipelines
+ci/cd pipeline
 ---
 
 - run react unit tests manually
