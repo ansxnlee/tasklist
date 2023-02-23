@@ -13,3 +13,9 @@ export interface Props {
   pb?: string;
   pl?: string;
 }
+
+export interface TaskProps {
+  title: string;
+  text: string;
+  taskid?: string;
+}

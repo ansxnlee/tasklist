@@ -3,12 +3,7 @@ import styled from '@emotion/styled';
 import { COLORS } from '../constants';
 import { useNavigate } from 'react-router-dom';
 import { deleteTask } from '../utils/axios';
-
-interface CardProps {
-  title: string;
-  text?: string;
-  taskid?: string;
-}
+import { TaskProps } from '../utils/types'
 
 /**
  * Task Card Component
@@ -17,7 +12,7 @@ interface CardProps {
  * @param id - id of task (as given by relational db)
  * @returns JSX Element
  */
-export const Card = ({ title, text, taskid }: CardProps) => {
+export const Card = ({ title, text, taskid }: TaskProps) => {
   const [readyDelete, setReadyDelete] = useState(false);
   const navigate = useNavigate();
 

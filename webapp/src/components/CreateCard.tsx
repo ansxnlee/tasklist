@@ -4,11 +4,7 @@ import { useNavigate } from 'react-router-dom';
 import { Formik, Form, Field } from 'formik';
 import * as Yup from 'yup';
 import { createTask } from '../utils/axios';
-
-interface TaskProps {
-  title: string;
-  text: string;
-}
+import { TaskProps } from '../utils/types';
 
 const FormSchema = Yup.object().shape({
   title: Yup.string()

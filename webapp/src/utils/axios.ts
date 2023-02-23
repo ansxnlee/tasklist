@@ -1,7 +1,7 @@
 import axios from 'axios';
 import { URL } from '../constants';
 
-export const getTask = async () => {
+export const getTasks = async () => {
   try {
     const res = await axios.get(URL.domain);
     return res;
