@@ -8,12 +8,10 @@ simple web app for tracking tasks
 - postgresql
 - mikroORM
 
-practice with fullstack applications and creating ci/cd pipelines
-
+ci/cd pipeline
 ---
-Some things that might be fun to try to implement:
-- caching queries in a redis data store
-- process manager daemon for the server
-- making the app conform to PCI standards
-- endpoint authentication
-- docker but prob not
+
+- run react unit tests manually
+- server endpoints can be tested with puppeteer
+- build react app for production using built-in CRA tools
+- use pm2 for uptime on the server
