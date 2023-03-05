@@ -1,7 +1,9 @@
 # tasklist
 
-simple web app for tracking tasks
+simple web app for tracking tasks and messing around with unit testing/E2E for an application
 
+technology
+---
 - react
 - emotion (css-in-js lib.)
 - expressJS
