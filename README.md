@@ -1,20 +1,16 @@
 # tasklist
 
-simple web app for tracking tasks and messing around with unit testing/E2E for an application
+messing around with unit testing/E2E for an application
 
-technology
+testing framework
 ---
-- react
-- emotion (css-in-js lib.)
-- expressJS
-- postgresql
-- mikroORM
+- jest/testing-library to test react components
+- postman to test api endpoints
 
 ci/cd pipeline
 ---
-
-- run react unit tests manually
-- server endpoints can be tested with something like postman
+- run react unit tests with node scripts
+- server endpoints are tested with postman/curl
 - build react app for production using built-in CRA tools
 - build js files for the server with tsnode
-- use pm2 for uptime on the server
+- use pm2 for server uptime
